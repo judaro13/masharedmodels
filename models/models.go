@@ -41,11 +41,11 @@ type UKAPIResults struct {
 
 // GeoCoordinate db struct
 type GeoCoordinate struct {
-	ID        uint `gorm:"autoIncrement:true;index"`
+	ID        uint `gorm:"primaryKey;index"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	Lat       float64 `gorm:"primaryKey" json:"lat"`
-	Lon       float64 `gorm:"primaryKey" json:"lon"`
+	Lat       float64 `gorm:"UNIQUE_INDEX:compositeindex;index;not null" json:"lat"`
+	Lon       float64 `gorm:"UNIQUE_INDEX:compositeindex;index;not null" json:"lon"`
 	Postcode  string  `gorm:"not null" json:"postcode"`
 }
 
